@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZshop каталог</title>
+  <link rel="stylesheet" href="css/katalog.css">
+  <style>
+    /* Основные стили */
+  </style>
+</head>
+
+<body>
+
+  <ul>
+    <li><a href="index.html">На главную</a></li>
+  </ul>
+
+  <section class="catalog">
+    <div class="container">
+      <!-- Боковая панель с фильтрами -->
+      <div class="filters">
+        <h3>Фильтры</h3>
+
+        <!-- Фильтр по категории -->
+        <label for="category">Категория:</label>
+        <select id="category" name="category">
+          <option value="all">Все</option>
+          <option value="action">Экшн</option>
+          <option value="rpg">РПГ</option>
+          <option value="strategy">Стратегии</option>
+        </select>
+
+        <!-- Фильтр по цене -->
+        <label for="price">Цена:</label>
+        <input type="range" id="price" name="price" min="0" max="10000" value="5000">
+        <span id="price-value">5000 ₽</span>
+
+        <!-- Фильтр по рейтингу -->
+        <label for="rating">Рейтинг:</label>
+        <select id="rating" name="rating">
+          <option value="all">Все</option>
+          <option value="5">5 звезд</option>
+          <option value="4">4 звезды</option>
+          <option value="3">3 звезды</option>
+        </select>
+      </div>
+
+      <!-- Продукты -->
+      <div class="products">
+
+        <!-- Продукт 1 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game1.jpg" alt="Игра 1" width="400" height="400">
+            <div class="product-details">
+              <h3>Call of Duty</h3>
+              <p class="price">5000 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="Call of Duty" data-price="5000">Купить</button>
+        </div>
+
+        <!-- Продукт 2 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game2.jpg" alt="Игра 2" width="400" height="400">
+            <div class="product-details">
+              <h3>Cyberpunk 2077</h3>
+              <p class="price">1200 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="Cyberpunk 2077" data-price="1200">Купить</button>
+        </div>
+
+        <!-- Продукт 3 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game3.jpg" alt="Игра 3" width="400" height="400">
+            <div class="product-details">
+              <h3>Minecraft</h3>
+              <p class="price">700 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="Minecraft" data-price="700">Купить</button>
+        </div>
+
+        <!-- Продукт 4 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game4.jpg" alt="Игра 4" width="400" height="400">
+            <div class="product-details">
+              <h3>GTA V</h3>
+              <p class="price">3500 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="GTA V" data-price="3500">Купить</button>
+        </div>
+
+        <!-- Продукт 5 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game5.jpg" alt="Игра 5" width="400" height="400">
+            <div class="product-details">
+              <h3>The Witcher 3</h3>
+              <p class="price">4500 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="The Witcher 3" data-price="4500">Купить</button>
+        </div>
+
+        <!-- Продукт 6 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game6.jpg" alt="Игра 6" width="400" height="400">
+            <div class="product-details">
+              <h3>Red Dead Redemption 2</h3>
+              <p class="price">5500 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="Red Dead Redemption 2" data-price="5500">Купить</button>
+        </div>
+
+        <!-- Продукт 7 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game7.png" alt="Игра 7" width="400" height="400">
+            <div class="product-details">
+              <h3>Assassin's Creed Valhalla</h3>
+              <p class="price">4200 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="Assassin's Creed Valhalla" data-price="4200">Купить</button>
+        </div>
+
+        <!-- Продукт 8 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game8.jpg" alt="Игра 8" width="400" height="400">
+            <div class="product-details">
+              <h3>Horizon Zero Dawn</h3>
+              <p class="price">3000 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="Horizon Zero Dawn" data-price="3000">Купить</button>
+        </div>
+
+        <!-- Продукт 9 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game9.jpg" alt="Игра 9" width="400" height="400">
+            <div class="product-details">
+              <h3>Watch Dogs: Legion</h3>
+              <p class="price">2500 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="Watch Dogs: Legion" data-price="2500">Купить</button>
+        </div>
+
+        <!-- Продукт 10 -->
+        <div class="product">
+          <div class="product-info">
+            <img src="game10.jpg" alt="Игра 10" width="400" height="400">
+            <div class="product-details">
+              <h3>FIFA 23</h3>
+              <p class="price">3500 ₽</p>
+            </div>
+          </div>
+          <button class="buy-btn" data-name="FIFA 23" data-price="3500">Купить</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Обновление значения цены при изменении ползунка
+    document.getElementById('price').addEventListener('input', function () {
+      document.getElementById('price-value').textContent = this.value + ' ₽';
+    });
+  </script>
+
+</body>
+
+</html>

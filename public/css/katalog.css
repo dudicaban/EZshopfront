@@ -1,0 +1,229 @@
+/* Основные стили */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #2c2c2c; /* Темный фон */
+  color: #ddd; /* Светлый текст */
+}
+
+h2 {
+  font-size: 2em;
+  color: #fff; /* Белый цвет заголовков */
+  text-align: center;
+  margin: 20px 0;
+}
+
+/* Стили для навигационного меню */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #1e1e1e; /* Темный фон для меню */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+ul li a {
+  color: #21da40; /* Зеленый цвет для ссылок */
+  text-decoration: none;
+  font-size: 1.3em;
+  padding: 10px 20px;
+  display: inline-block;
+}
+
+ul li a:hover {
+  background-color: #45b94d;
+  border-radius: 5px;
+}
+
+/* Стили для каталога */
+.catalog {
+  padding: 20px 0;
+  background-color: #333; /* Темный фон для каталога */
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.product {
+  width: 300px;
+  border: 1px solid #444; /* Более светлая рамка */
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #222; /* Темный фон для карточки */
+  transition: transform 0.3s, box-shadow 0.3s;
+  overflow: hidden;
+  position: relative; /* Изменили на relative для корректного позиционирования кнопки */
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+.product-info {
+  padding: 20px; /* Увеличен отступ */
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; 
+}
+
+.product-info img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+.product-info img:hover {
+  transform: scale(1.05);
+}
+
+.product-details {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.product-details h3 {
+  font-size: 1.5em;
+  color: #fff;
+  margin: 10px 0;
+}
+
+.product-details .price {
+  font-size: 1.2em;
+  color: #e74c3c; /* Красный цвет для цены */
+  font-weight: bold;
+}
+
+.product-info {
+  padding-bottom: 60px; /* Добавлен отступ для кнопки */
+}
+
+.buy-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #3fe45b;
+  color: white;
+  border: none;
+  border-radius: 0 0 10px 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+  position: relative; /* Меняем на relative для корректного отображения */
+  margin-top: auto; /* Убедитесь, что кнопка будет всегда внизу карточки */
+}
+
+.buy-btn:hover {
+  background-color: #45b94d;
+}
+
+/* Убираем кнопку в футере */
+footer {
+  display: none;
+}
+
+/* Мобильная адаптивность */
+@media (max-width: 768px) {
+  .products {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .product {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  ul li {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    font-size: 1.8em;
+  }
+}
+.buy-btn {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background-color: #3fe45b;
+  color: white;
+  border: none;
+  border-radius: 0 0 10px 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+  position: absolute;
+  bottom: 0;
+}
+
+.buy-btn:hover {
+  background-color: #45b94d;
+}
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+}
+.filters {
+  width: 250px;
+  background-color: #444;
+  padding: 20px;
+  border-radius: 10px;
+  margin-right: 30px;
+}
+.filters h3 {
+  color: #fff;
+  font-size: 1.5em;
+  margin-bottom: 15px;
+}
+
+.filters label {
+  color: #ddd;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.filters select,
+.filters input[type="range"] {
+  width: 100%;
+  padding: 8px;
+  background-color: #555;
+  color: #ddd;
+  border: 1px solid #666;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Продукты */
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  margin-top: 20px;
+  width: 100%;
+}

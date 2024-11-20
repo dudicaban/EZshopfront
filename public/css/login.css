@@ -1,0 +1,154 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #333; /* Темно-серый фон */
+  color: #ffffff; /* Белый текст на темном фоне */
+}
+
+header {
+  background-color: #222;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+main {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+footer {
+  background-color: #222;
+  color: #5a5959;
+  text-align: center;
+  padding: 10px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #444;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.balance {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.balance span {
+  font-weight: bold;
+  color: #28a745;
+}
+
+.top-up-form {
+  margin-top: 20px;
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
+}
+
+.top-up-form input {
+  padding: 10px;
+  width: 100%;
+  font-size: 1.1em;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.top-up-form button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.top-up-form button:hover {
+  background-color: #218838;
+}
+
+.message {
+  margin-top: 20px;
+  color: #28a745;
+  font-size: 1.2em;
+}
+
+/* Корзина */
+.cart {
+  background-color: #555;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 40px;
+}
+
+.cart h3 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+}
+
+.cart ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cart ul li {
+  padding: 10px;
+  background-color: #666;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.cart ul li span {
+  font-weight: bold;
+  color: #ff0;
+}
+
+.cart-empty {
+  text-align: center;
+  color: #ccc;
+  font-size: 1.2em;
+}
+nav ul li a {
+  color: #3fe45b;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+
+/* Стили для навигационного меню */
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+/* Стили для ссылок в навигационном меню при наведении */
+nav ul li a:hover {
+  color: #ff0;
+}
+
+
+.login-icon {
+  font-size: 1.5em; /* Размер иконки */
+  color: #2dd849;
+}
+
+.login-icon:hover {
+  color: #ff0; /* Цвет при наведении */
+}
+ul li a:hover {
+  background-color: #45b94d;
+  border-radius: 5px;
+}
