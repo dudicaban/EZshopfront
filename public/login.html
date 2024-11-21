@@ -23,6 +23,9 @@
             <h2>Добро пожаловать в личный кабинет</h2>
             
             <!-- Информация о текущем балансе -->
+             <div class="username">
+                <p></p>
+             </div>
             <div class="balance">
                 <p>Ваш текущий баланс: <span>1000000000 Р</span></p>
             </div>
@@ -31,7 +34,7 @@
             <div class="top-up-form">
                 <nav>
                     <ul>
-                        <li><a href="Поплнить счёт.html">Пополнить счёт</a></li>
+                        <li><a href="popolni.html">Пополнить счёт</a></li>
                     </ul>
                 </nav>
                 <!-- <form action="submit-top-up.html" method="POST">
@@ -64,5 +67,45 @@
     <footer>
         <p>&copy; 2024 EZshop.com</p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Функция для получения CSRF токена из cookies
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // Функция для получения данных о пользователе
+        async function getUserProfile() {
+            const csrfToken = getCookie('csrftoken'); // Получаем CSRF токен
+
+            try {
+                const response = await axios.get(
+                    'http://127.0.0.1:8000/api/v1/profile/', // Поменяйте на ваш URL
+                    {
+                        headers: {
+                            'X-CSRFToken': csrfToken,
+                            'Content-Type': 'application/json'
+                        },
+                        withCredentials: true // Включаем куки с сессионными данными
+                    }
+                );
+
+                // Обновляем информацию о пользователе на странице
+                const user = response.data;
+                document.getElementById('balance').textContent = user.balance; // Устанавливаем баланс
+            } catch (error) {
+                console.error('Ошибка при получении данных о пользователе:', error.response || error);
+                document.getElementById('balance').textContent = 'Ошибка при загрузке данных';
+            }
+        }
+
+        // Загружаем данные о пользователе при загрузке страницы
+        window.onload = function() {
+            getUserProfile();
+        };
+    </script>
 </body>
 </html>

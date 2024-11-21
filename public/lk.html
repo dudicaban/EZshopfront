@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - EZshop</title>
+    <link rel="stylesheet" href="css/login.css">
+    <style>
+        /* Добавьте сюда свои стили */
+        #user-info {
+            margin-top: 20px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+        }
+
+        .user-details {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<nav>
+    <ul>
+        <li><a href="index.html">На главную</a></li>
+    </ul>
+</nav>
+<body>
+    <header>
+        <h1>EZshop - Личный кабинет</h1>
+    </header>
+    <main>
+        <div class="container">
+            <h2>Добро пожаловать в личный кабинет</h2>
+            
+            <!-- Информация о пользователе -->
+            <div id="user-info">
+                <div id="user-name" class="user-details">Загружается...</div>
+                <div id="user-email" class="user-details">Загружается...</div>
+                <div id="balance" class="user-details">Баланс: Загрузка...</div>
+            </div>
+
+            <!-- Форма для пополнения счета -->
+            <div class="top-up-form">
+                <nav>
+                    <ul>
+                        <li><a href="popolni.html">Пополнить счёт</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="message">
+                <p id="error-message" class="error-message"></p>
+            </div>
+
+            <!-- Корзина -->
+            <div class="cart">
+                <h3>Ваша корзина</h3>
+                <div class="cart-empty">
+                    <p>Ваша корзина пуста.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 EZshop.com</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        // Функция для получения CSRF токена из cookies
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
+
+        // Функция для получения данных о пользователе
+        async function getUserProfile() {
+            const csrfToken = getCookie('csrftoken'); // Получаем CSRF токен
+
+            try {
+                const response = await axios.get(
+                    'http://127.0.0.1:8000/api/v1/profile/', // Поменяйте на ваш URL
+                    {
+                        headers: {
+                            'X-CSRFToken': csrfToken,
+                            'Content-Type': 'application/json'
+                        },
+                        withCredentials: true // Включаем куки с сессионными данными
+                    }
+                );
+
+                // Обновляем информацию о пользователе на странице
+                const user = response.data;
+                document.getElementById('user-name').textContent = `Имя пользователя: ${user.username}`;
+                document.getElementById('user-email').textContent = `Email: ${user.email}`;
+                document.getElementById('balance').textContent = `Баланс: ${user.balance} Р`;
+
+                // Скрываем сообщение об ошибке, если данные загружены успешно
+                document.getElementById('error-message').textContent = '';
+            } catch (error) {
+                console.error('Ошибка при получении данных о пользователе:', error.response || error);
+
+                // Если ошибка, показываем сообщение
+                document.getElementById('error-message').textContent = 'Ошибка при загрузке данных о пользователе. Пожалуйста, авторизуйтесь.';
+                
+                // Очистка данных
+                document.getElementById('user-name').textContent = '';
+                document.getElementById('user-email').textContent = '';
+                document.getElementById('balance').textContent = '';
+            }
+        }
+
+        // Загружаем данные о пользователе при загрузке страницы
+        window.onload = function() {
+            getUserProfile();
+        };
+    </script>
+</body>
+</html>

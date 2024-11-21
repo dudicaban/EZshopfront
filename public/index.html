@@ -22,7 +22,9 @@
             <li><a href="#home">Главная</a></li>
             <li><a href="katalog.html">Каталог</a></li>
             <li><a href="popolni.html">Пополнить счёт</a></li>
-            <li><a href="login.html"> <class="login-icon"><i class="fas fa-user"> </i> Личный кабинет</a></li>
+            <li><a href="lk.html"> <class="login-icon"><i class="fas fa-user"> </i> Личный кабинет</a></li>
+            <li><a href="registration.html"> <class="registration-icon"><i class="registration userr"> </i> Регистрация</a></li>
+            <li><a href="loglogin.html"> <class="loglogin-icon"><i class="loglogin userr"> </i> Логин</a></li>
         </ul>
     </nav>
 
@@ -45,53 +47,54 @@
         
 
         <!-- Добавим раздел для поиска и товаров -->
-        <div class="main-content">
-            <div class="product-item">
-                <img src="game4.jpg" alt="Пример товара">
-                <h3>GTA V</h3>
-                <p>Описание игры 1. Отличная игра для ПК с множеством функций.</p>
-                <div class="price">500 Р</div>
-            </div>
-
-            <div class="product-item">
-                <img src="game6.jpg" alt="Пример товара">
-                <h3>РЕД ДЕД РЕДЕМШЕН</h3>
-                <p>Описание игры 2. Забавная и увлекательная игра для консоли.</p>
-                <div class="price">400 Р</div>
-            </div>
-
-            <div class="product-item">
-                <img src="game3.jpg" alt="Пример товара">
-                <h3>Minecraft</h3>
-                <p>Описание игры 3. Захватывающая игра для любителей приключений.</p>
-                <div class="price">600 Р</div>
-            </div>
-
-            <div class="product-item">
-                <img src="game5.jpg" alt="Пример товара">
-                <h3>The Witcher 3</h3>
-                <p>Описание игры 4. Прекрасная ролевая игра с открытым миром.</p>
-                <div class="price">700 Р</div>
-            </div>
-
-            <div class="product-item">
-                <img src="game2.jpg" alt="Пример товара">
-                <h3>Cyberpunk 2077</h3>
-                <p>Описание игры 5. Увлекательная игра в стиле киберпанк с множеством приключений.</p>
-                <div class="price">800 Р</div>
-            </div>
-
-            <div class="product-item">
-                <img src="game11.jpg" alt="Пример товара">
-                <h3>Fortnite</h3>
-                <p>Описание игры 6. Популярная королевская битва с мультиплеером.</p>
-                <div class="price">350 Р</div>
-            </div>
+        <div class="main-content" id="products-container">
+            
         </div>
     </main>
 
     <footer>
         <p>&copy; 2024 EZshop.com</p>
     </footer>
+    <script>
+        // URL вашего API
+        const apiUrl = 'http://127.0.0.1:8000/api/v1/games/';
+
+        // Элемент, куда будут добавляться продукты
+        const productsContainer = document.getElementById('products-container');
+
+        // Функция для загрузки данных из API
+        async function loadGames() {
+            try {
+                const response = await fetch(apiUrl); // Выполняем GET-запрос к API
+                if (!response.ok) {
+                    throw new Error('Ошибка загрузки данных');
+                }
+                const games = await response.json(); // Преобразуем ответ в JSON
+                renderGames(games); // Рендерим игры на страницу
+            } catch (error) {
+                console.error('Ошибка:', error);
+            }
+        }
+
+        // Функция для отрисовки игр
+        function renderGames(games) {
+            productsContainer.innerHTML = ''; // Очищаем контейнер
+            games.forEach(game => {
+                // Создаем HTML для каждой игры
+                const productHTML = `
+                    <div class="product-item">
+                        <img src="${game.photo || 'default-game.jpg'}" alt="${game.title}">
+                        <h3>${game.title}</h3>
+                        <p>${game.description || 'Описание игры отсутствует.'}</p>
+                        <div class="price">${game.price} ₽</div>
+                    </div>
+                `;
+                productsContainer.insertAdjacentHTML('beforeend', productHTML);
+            });
+        }
+
+        // Загружаем данные при загрузке страницы
+        document.addEventListener('DOMContentLoaded', loadGames);
+    </script>
 </body>
 </html>
